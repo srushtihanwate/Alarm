@@ -40,13 +40,12 @@ function displayTimer() {
   ];
 
   //Display time
-  timerRef.innerHTML = '${hours}:${minutes}:${seconds}';
+  timerRef.innerHTML = `${hours}:${minutes}:${seconds}`;
 
   //Alarm
   alarmsArray.forEach((alarm, index) => {
     if (alarm.isActive) {
-      if ('${alarm.alarmHour}:${alarm.alarmMinute}' === '${hours}:${minutes}') 
-      {
+      if (`${alarm.alarmHour}:${alarm.alarmMinute}` === `${hours}:${minutes}`) {
         alarmSound.play();
         alarmSound.loop = true;
       }
@@ -79,7 +78,7 @@ const createAlarm = (alarmObj) => {
   let alarmDiv = document.createElement("div");
   alarmDiv.classList.add("alarm");
   alarmDiv.setAttribute("data-id", id);
-  alarmDiv.innerHTML = <span>${alarmHour}: ${alarmMinute}</span>;
+  alarmDiv.innerHTML = `<span>${alarmHour}: ${alarmMinute}</span>`;
 
   //checkbox
   let checkbox = document.createElement("input");
@@ -94,7 +93,7 @@ const createAlarm = (alarmObj) => {
   alarmDiv.appendChild(checkbox);
   //Delete button
   let deleteButton = document.createElement("button");
-  deleteButton.innerHTML = <i class="fa-solid fa-trash-can"></i>;
+  deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
   deleteButton.classList.add("deleteButton");
   deleteButton.addEventListener("click", (e) => deleteAlarm(e));
   alarmDiv.appendChild(deleteButton);
@@ -107,7 +106,7 @@ setAlarm.addEventListener("click", () => {
 
   //alarmObject
   let alarmObj = {};
-  alarmObj.id = '${alarmIndex}_${hourInput.value}_${minuteInput.value}';
+  alarmObj.id = `${alarmIndex}_${hourInput.value}_${minuteInput.value}`;
   alarmObj.alarmHour = hourInput.value;
   alarmObj.alarmMinute = minuteInput.value;
   alarmObj.isActive = false;
